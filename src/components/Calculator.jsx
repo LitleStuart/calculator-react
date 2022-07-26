@@ -130,7 +130,7 @@ const Calculator = () => {
   }
 
   return (
-    <div>
+    <div className="calculator">
       <Screen value={state.screen} />
       <Keyboard onButtonClick={handleButton} />
     </div>

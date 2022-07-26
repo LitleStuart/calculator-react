@@ -7,7 +7,7 @@ const Button = (props) => {
         props.onButtonClick(props.value);
       }}
     >
-      {props.value}
+      <span>{props.value}</span>
     </button>
   );
 };
