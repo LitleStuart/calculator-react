@@ -1,63 +1,16 @@
 import React, { useState } from "react";
+import {
+  screenHasDot,
+  isOperator,
+  serializeString,
+  calculateResult,
+  isDigit,
+  isDot,
+  isBackspace,
+  isEqualButton,
+} from "../utils/helpers/Calculator.helpers";
 import Keyboard from "./Keyboard";
 import Screen from "./Screen";
-
-function isDigit(value) {
-  return Number.parseInt(value) >= 0 && Number.parseInt(value) <= 9;
-}
-
-function isOperator(value) {
-  return value === "+" || value === "-" || value === "*" || value === "/";
-}
-
-function isDot(value) {
-  return value === ".";
-}
-
-function isBackspace(value) {
-  return value === "backspace";
-}
-
-function isEqualButton(value) {
-  return value === "=";
-}
-
-function screenHasDot(screen) {
-  return screen.indexOf(".") !== -1;
-}
-
-function screenHasOperator(screen) {
-  const hasPlus = screen.indexOf("+") !== -1;
-  const hasMinus = screen.indexOf("-") !== -1;
-  const hasMulti = screen.indexOf("*") !== -1;
-  const hasDevide = screen.indexOf("/") !== -1;
-
-  return hasPlus || hasMinus || hasMulti || hasDevide;
-}
-
-function serializeString(screen, operator) {
-  const result = screen.split(operator);
-  return {
-    first: Number.parseFloat(result[0]),
-    second: Number.parseFloat(result[1]),
-  };
-}
-
-function calculateResult(first, second, operator) {
-  switch (operator) {
-    case "+":
-      return Number((first + second).toFixed(7));
-    case "-":
-      return Number((first - second).toFixed(7));
-    case "*":
-      return Number((first * second).toFixed(7));
-    case "/":
-      return Number((first / second).toFixed(7));
-
-    default:
-      return;
-  }
-}
 
 const Calculator = () => {
   const [state, setState] = useState({ screen: "", operator: null });
