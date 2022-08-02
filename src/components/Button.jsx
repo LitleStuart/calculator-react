@@ -3,19 +3,23 @@ import { isBackspace, isOperator } from "../utils/helpers/Calculator.helpers";
 
 const Button = (props) => {
   return (
-    <button
+    <div
       onClick={() => {
         props.onButtonClick(props.value);
       }}
-      className={
-        (isOperator(props.value) || isBackspace(props.value)) &&
-        props.value !== "/"
-          ? "material-symbols-outlined"
-          : ""
-      }
+      className={"button"}
     >
-      <span>{props.value}</span>
-    </button>
+      <span
+        className={
+          (isOperator(props.value) || isBackspace(props.value)) &&
+          props.value !== "/"
+            ? "material-symbols-outlined"
+            : ""
+        }
+      >
+        {props.value}
+      </span>
+    </div>
   );
 };
 
